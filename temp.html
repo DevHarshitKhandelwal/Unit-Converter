@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+</head>
+<body>
+     <h1>Unit Converter</h1>
+     <p>temperature Converter</p>
+     <form id="form">
+        <label for="value">Enter value</label>
+        <input type="text" id="value" placeholder="Enter Value" name="value">
+        <br>
+        <label for="from">From:</label>
+        <select id="from" name="from">
+<option value="Celsius">Celsius</option>
+<option value="Fahrenheit">Fahrenheit</option>
+<option value="Kelvin">Kelvin</option>
+</select>
+<br>
+        <label for="to">To:</label>
+        <select id="to" name="to">
+<option value="Celsius">Celsius</option>
+<option value="Fahrenheit">Fahrenheit</option>
+<option value="Kelvin">Kelvin</option>
+</select>
+<br>
+<button type="submit">Convert</button>
+        
+     </form>
+     <h1 id="ans">Result</h1>
+
+
+     <script>
+
+        const form = document.getElementById("form");
+
+        function convertTemperature(value, from, to) {
+
+    if (from === "Celsius" && to === "Fahrenheit") {
+        return (value * 9 / 5) + 32;
+    }
+
+    if (from === "Celsius" && to === "Kelvin") {
+        return value + 273.15;
+    }
+
+    if (from === "Fahrenheit" && to === "Celsius") {
+        return (value - 32) * 5 / 9;
+    }
+
+    if (from === "Fahrenheit" && to === "Kelvin") {
+        return (value - 32) * 5 / 9 + 273.15;
+    }
+
+    if (from === "Kelvin" && to === "Celsius") {
+        return value - 273.15;
+    }
+
+    if (from === "Kelvin" && to === "Fahrenheit") {
+        return (value - 273.15) * 9 / 5 + 32;
+    }
+
+    return value;
+}
+
+ form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let value = Number(form.value.value);
+            let from = form.from.value;
+            let to = form.to.value;
+            let ans = document.getElementById("ans");
+            let a = convertTemperature(value,from,to)
+
+
+            
+
+            ans.textContent = `Result: ${a} ${to}`;
+
+        });
+
+     </script>
+
+
+</body>
+</html>

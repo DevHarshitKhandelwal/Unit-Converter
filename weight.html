@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+</head>
+
+<body>
+
+    <h1>Unit Converter</h1>
+    <p>Weight Converter</p>
+
+    <form id="form">
+
+        <label for="value">Enter value</label>
+        <input type="text" id="value" placeholder="Enter Value" name="value">
+
+        <br>
+
+        <label for="from">From:</label>
+
+        <select id="from" name="from">
+            <option value="Milligram">Milligram</option>
+            <option value="Gram">Gram</option>
+            <option value="Kilogram">Kilogram</option>
+            <option value="Ounce">Ounce</option>
+            <option value="Pound">Pound</option>
+        </select>
+
+        <br>
+
+        <label for="to">To:</label>
+
+        <select id="to" name="to">
+            <option value="Milligram">Milligram</option>
+            <option value="Gram">Gram</option>
+            <option value="Kilogram">Kilogram</option>
+            <option value="Ounce">Ounce</option>
+            <option value="Pound">Pound</option>
+        </select>
+
+        <br>
+
+        <button type="submit">Convert</button>
+
+    </form>
+
+    <h1 id="ans">Result</h1>
+
+
+    <script>
+
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let value = Number(form.value.value);
+            let from = form.from.value;
+            let to = form.to.value;
+
+            let ans = document.getElementById("ans");
+
+            const toGram = {
+                Milligram: 0.001,
+                Gram: 1,
+                Kilogram: 1000,
+                Ounce: 28.349523125,
+                Pound: 453.59237
+            };
+
+            let gram = value * toGram[from];
+
+            let result = gram / toGram[to];
+
+            ans.textContent = `Result: ${result} ${to}`;
+
+        });
+
+    </script>
+
+</body>
+
+</html>

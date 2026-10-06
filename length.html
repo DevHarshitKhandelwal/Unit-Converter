@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+</head>
+
+<body>
+
+    <h1>Unit Converter</h1>
+
+    <p>Length Converter</p>
+
+    <form id="form">
+
+        <label for="value">Enter value</label>
+        <input type="text" id="value" placeholder="Enter Value" name="value">
+
+        <br><br>
+
+        <label for="from">From:</label>
+
+        <select id="from" name="from">
+            <option value="Millimeter">Millimeter</option>
+            <option value="Centimeter">Centimeter</option>
+            <option value="Meter">Meter</option>
+            <option value="Kilometer">Kilometer</option>
+            <option value="Inch">Inch</option>
+            <option value="Foot">Foot</option>
+            <option value="Yard">Yard</option>
+            <option value="Mile">Mile</option>
+        </select>
+
+        <br><br>
+
+        <label for="to">To:</label>
+
+        <select id="to" name="to">
+            <option value="Millimeter">Millimeter</option>
+            <option value="Centimeter">Centimeter</option>
+            <option value="Meter">Meter</option>
+            <option value="Kilometer">Kilometer</option>
+            <option value="Inch">Inch</option>
+            <option value="Foot">Foot</option>
+            <option value="Yard">Yard</option>
+            <option value="Mile">Mile</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Convert</button>
+
+    </form>
+
+    <h1 id="ans">Result</h1>
+
+
+    <script>
+
+        let form = document.getElementById("form");
+
+        const toMeter = {
+            Millimeter: 0.001,
+            Centimeter: 0.01,
+            Meter: 1,
+            Kilometer: 1000,
+            Inch: 0.0254,
+            Foot: 0.3048,
+            Yard: 0.9144,
+            Mile: 1609.344
+        };
+
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let value = Number(form.value.value);
+            let from = form.from.value;
+            let to = form.to.value;
+            let ans = document.getElementById("ans");
+
+            let meter = value * toMeter[from];
+
+            let result = meter / toMeter[to];
+
+            ans.textContent = `Result: ${result} ${to}`;
+
+        });
+
+    </script>
+
+</body>
+
+</html>
